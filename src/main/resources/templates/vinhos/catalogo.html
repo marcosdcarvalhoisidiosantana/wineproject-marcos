@@ -1,0 +1,64 @@
+<!doctype html>
+<html lang="pt" xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://thymeleaf.org" 
+      xmlns:layout="http://www.ultraq.net/nz/thymeleaf/layout"   
+>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
+    <meta name="generator" content="Hugo 0.83.1">
+    <title>Catálogo de vinhos</title>
+
+    <link rel="canonical" href="https://getbootstrap.com/docs/5.0/examples/features/">
+
+    
+
+    <!-- Bootstrap core CSS -->
+    <link href="/webjars/bootstrap/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="/webjars/open-iconic/font/css/open-iconic-bootstrap.min.css" rel="stylesheet" />
+
+    <style>
+      .card-text-center  {
+        padding: 5px;
+        margin-left: 5px;
+        margin-right: 5px;
+      }
+
+    </style>
+  </head>
+  <body>
+    <div class="container py-4">
+      <header class="row pb-3 mb-4 border-bottom">
+        <a class="col-sm d-flex align-items-center text-dark text-decoration-none" href="/">
+          <img width="40" height="32" class="me-2" viewBox="0 0 118 94" src="/image/wineicon.png">
+          </img>
+          <span class="fs-4"> Wine Project</span>
+        </a>
+        <a class="btn btn-dark mr-2" href="/vinhos/cadastrar">Cadastre um vinho</a>
+      </header>
+      
+      <div class="container-sm row">
+          <tbody>
+            <tr th:each="v : ${vinho}">
+              <div class="card col-6 col-sm-4" style="width: 18rem;">
+                <div class="card-body">
+                  <h5 class="card-title" th:text="${v.nome}">Card title</h5>
+                  <h6 class="card-subtitle mb-2 text-muted" th:text="'R$' + ${v.preco}">Card subtitle</h6>
+                  <p class="card-text" th:text="'Origem: ' + ${v.origem}">Origem</p>
+                  <p class="card-text" th:text="'Uva: ' + ${v.uva}">Tipo</p>
+                  <a href="" class="card-link">Editar vinho</a>
+                  <a th:href="@{/vinhos/excluir/{id}(id=${v.id})}" class="card-link">Deletar vinho</a>
+                </div>
+              </div>
+            </tr>
+          </tbody>
+       </div>
+    </div>
+  </body>
+  <script src="/webjars/jquery/jquery.min.js"></script>
+  <script src="/webjars/jquery-mask-plugin/dist/jquery.mask.min.js"></script>
+  <script	src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+  <script src="/webjars/bootstrap/js/bootstrap.min.js"></script>
+</html>
